@@ -54,16 +54,16 @@ app.use("/posts", postRoutes);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
-mongoose
-  .connect(process.env.MONGO_URL)
-  .then(() => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+const url = process.env.MONGO_URL;
 
-    /* ADD DATA ONE TIME */
-    // User.insertMany(users);
-    // Post.insertMany(posts);
-  })
-  .catch((error) => console.log(`${error} did not connect`));
+mongoose.connect(url).then(() => {
+    console.log('mongodb server started')
+})
+  
+app.listen(PORT || 4000, () => {
+  console.log(`listening on port: ${PORT}`);
+});
+ 
 //    mongoose.connect(process.env.MONGO_URL, {});
 //         console.log("CONNECTED TO DATABASE SUCCESSFULLY").then(() => {
 //           app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
