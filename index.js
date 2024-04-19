@@ -55,10 +55,7 @@ app.use("/posts", postRoutes);
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
 mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGO_URL, { })
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
@@ -67,3 +64,11 @@ mongoose
     // Post.insertMany(posts);
   })
   .catch((error) => console.log(`${error} did not connect`));
+//    mongoose.connect(process.env.MONGO_URL, {});
+//         console.log("CONNECTED TO DATABASE SUCCESSFULLY").then(() => {
+//           app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+//           })
+//     } catch (error) {
+//         console.error('COULD NOT CONNECT TO DATABASE:', error.message);
+//     }
+// };
